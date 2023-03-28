@@ -1,0 +1,10 @@
+name: nd0821-c3
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.8
+  - pip
+  - git
+  - pip:
+    - -r starter/requirements.txt
