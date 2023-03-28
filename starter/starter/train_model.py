@@ -9,7 +9,7 @@ from sklearn.model_selection import train_test_split
 
 # Import custom functions
 from ml.data import process_data
-from ml.model import train_model, inference, compute_model_metrics
+from ml.model import train_model, inference, compute_model_metrics, compute_metrics_on_slices
 
 # Define file paths
 file_dir = os.path.dirname(__file__)
@@ -43,3 +43,16 @@ precision, recall, fbeta = compute_model_metrics(y_test, preds)
 
 # Print metrics
 print(f"Precision: {precision:.4f}, Recall: {recall:.4f}, F-beta score: {fbeta:.4f}")
+
+# Compute metrics on slices for the 'education' feature and save to a file
+feature = "education"
+slice_metrics = compute_metrics_on_slices(rf_model, test_data, feature, encoder, lb, cat_features)
+
+# Create a file named slice_output.txt in the working directory 
+# containing the performance metrics for each unique value of the 'education' feature
+with open('slice_output.txt', 'w') as f:
+    for value, metrics in slice_metrics.items():
+        f.write(f"{feature}: {value}\n")
+        f.write(f"Precision: {metrics['precision']:.4f}, Recall: {metrics['recall']:.4f}, F-beta score: {metrics['fbeta']:.4f}\n")
+        f.write("\n")
+        

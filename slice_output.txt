@@ -1,0 +1,48 @@
+education: Bachelors
+Precision: 0.7468, Recall: 0.7891, F-beta score: 0.7674
+
+education: HS-grad
+Precision: 0.6432, Recall: 0.4294, F-beta score: 0.5150
+
+education: 12th
+Precision: 0.5000, Recall: 0.2000, F-beta score: 0.2857
+
+education: Some-college
+Precision: 0.6957, Recall: 0.5246, F-beta score: 0.5981
+
+education: Doctorate
+Precision: 0.7794, Recall: 0.8833, F-beta score: 0.8281
+
+education: Masters
+Precision: 0.8238, Recall: 0.8238, F-beta score: 0.8238
+
+education: 1st-4th
+Precision: 1.0000, Recall: 0.0000, F-beta score: 0.0000
+
+education: 7th-8th
+Precision: 0.5000, Recall: 0.1000, F-beta score: 0.1667
+
+education: 10th
+Precision: 0.5000, Recall: 0.1818, F-beta score: 0.2667
+
+education: Prof-school
+Precision: 0.8812, Recall: 0.9368, F-beta score: 0.9082
+
+education: 9th
+Precision: 1.0000, Recall: 0.0000, F-beta score: 0.0000
+
+education: Assoc-acdm
+Precision: 0.7619, Recall: 0.5714, F-beta score: 0.6531
+
+education: 11th
+Precision: 1.0000, Recall: 0.2500, F-beta score: 0.4000
+
+education: Assoc-voc
+Precision: 0.7500, Recall: 0.4925, F-beta score: 0.5946
+
+education: 5th-6th
+Precision: 0.3333, Recall: 0.5000, F-beta score: 0.4000
+
+education: Preschool
+Precision: 0.0000, Recall: 1.0000, F-beta score: 0.0000
+
