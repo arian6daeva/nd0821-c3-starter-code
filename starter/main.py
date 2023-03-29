@@ -1,3 +1,4 @@
+import os
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import pandas as pd
@@ -6,12 +7,14 @@ import pickle
 from starter.ml.data import process_data
 from starter.ml.model import inference
 
+
 # Load the trained model, encoder, and label binarizer
-with open('model/rf_model.pkl', 'rb') as f:
+file_dir = os.path.dirname(__file__)
+with open(os.path.join(file_dir, 'model/rf_model.pkl'), 'rb') as f:
     rf_model = pickle.load(f)
-with open('model/encoder.pkl', 'rb') as f:
+with open(os.path.join(file_dir, 'model/encoder.pkl'), 'rb') as f:
     encoder = pickle.load(f)
-with open('model/lb.pkl', 'rb') as f:
+with open(os.path.join(file_dir, 'model/lb.pkl'), 'rb') as f:
     lb = pickle.load(f)
 
 # Create a FastAPI instance
