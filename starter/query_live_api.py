@@ -1,6 +1,6 @@
 import requests
 
-url = "http://URL/predict/"
+url = "https://deploy-fastapi-application.onrender.com/predict/"
 
 data = {
     "age": 39,
