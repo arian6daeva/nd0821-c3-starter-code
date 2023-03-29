@@ -1,16 +1,14 @@
 import os
 import sys
+file_dir = os.path.dirname(__file__)
+sys.path.insert(0, file_dir)
 import pytest
+from ml.model import train_model, compute_model_metrics, inference
 from sklearn.datasets import make_classification
 from sklearn.model_selection import train_test_split
 
-file_dir = os.path.dirname(__file__)
-sys.path.insert(0, file_dir)
-
-from ml.model import train_model, compute_model_metrics, inference
 
 # Define a fixture that creates sample data for testing
-
 @pytest.fixture(scope='module')
 def sample_data():
     # Generate a random dataset for a classification problem

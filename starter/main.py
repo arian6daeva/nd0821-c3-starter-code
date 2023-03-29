@@ -3,8 +3,8 @@ from pydantic import BaseModel
 import pandas as pd
 import pickle
 
-from starter.ml.data import process_data
-from starter.ml.model import inference
+from starter.starter.ml.data import process_data
+from starter.starter.ml.model import inference
 
 # Load the trained model, encoder, and label binarizer
 with open('starter/model/rf_model.pkl', 'rb') as f:
