@@ -1,3 +1,4 @@
+from ml.model import train_model, compute_model_metrics, inference
 import os
 import sys
 import numpy as np
@@ -8,15 +9,16 @@ from sklearn.model_selection import train_test_split
 file_dir = os.path.dirname(__file__)
 sys.path.insert(0, file_dir)
 
-from ml.model import train_model, compute_model_metrics, inference
 
 # Define a fixture that creates sample data for testing
+
 @pytest.fixture(scope='module')
 def sample_data():
     # Generate a random dataset for a classification problem
     X, y = make_classification(n_samples=100, n_features=20, random_state=42)
     # Split the dataset into train and test sets
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=42)
     return X_train, X_test, y_train, y_test
 
 
@@ -41,11 +43,13 @@ def test_compute_model_metrics(sample_data):
     assert 0 <= fbeta <= 1, "F1 score should be between 0 and 1."
 
 
-# Test the inference function to ensure it returns predictions with the correct format
+# Test the inference function to ensure it returns predictions with the
+# correct format
 def test_inference(sample_data):
     X_train, X_test, y_train, _ = sample_data
     model = train_model(X_train, y_train)
     preds = inference(model, X_test)
 
-    assert len(preds) == len(X_test), "Number of predictions should match the number of test samples."
+    assert len(preds) == len(
+        X_test), "Number of predictions should match the number of test samples."
     assert set(preds).issubset({0, 1}), "Predictions should be either 0 or 1."

@@ -64,7 +64,13 @@ def inference(model, X):
     return preds
 
 
-def compute_metrics_on_slices(model, data, feature, encoder, lb, categorical_features):
+def compute_metrics_on_slices(
+        model,
+        data,
+        feature,
+        encoder,
+        lb,
+        categorical_features):
     """
     Computes the performance metrics for each unique value of a given categorical feature.
 
@@ -86,16 +92,20 @@ def compute_metrics_on_slices(model, data, feature, encoder, lb, categorical_fea
     """
     slice_metrics = {}
     feature_values = data[feature].unique()
-    
+
     for value in feature_values:
         data_slice = data[data[feature] == value]
-        X_slice, y_slice, _, _ = process_data(data_slice, categorical_features=categorical_features, label="salary", training=False, encoder=encoder, lb=lb)
+        X_slice, y_slice, _, _ = process_data(
+            data_slice, categorical_features=categorical_features, label="salary", training=False, encoder=encoder, lb=lb)
 
         if len(X_slice) == 0:
             continue
 
         preds = model.predict(X_slice)
         precision, recall, fbeta = compute_model_metrics(y_slice, preds)
-        slice_metrics[value] = {'precision': precision, 'recall': recall, 'fbeta': fbeta}
-    
+        slice_metrics[value] = {
+            'precision': precision,
+            'recall': recall,
+            'fbeta': fbeta}
+
     return slice_metrics

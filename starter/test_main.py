@@ -13,7 +13,8 @@ def test_root():
     """
     response = client.get("/")
     assert response.status_code == 200
-    assert response.json() == {"message": "Welcome to the salary prediction API!"}
+    assert response.json() == {
+        "message": "Welcome to the salary prediction API!"}
 
 
 def test_salary_prediction_over_50k():
@@ -36,7 +37,11 @@ def test_salary_prediction_over_50k():
         "hours_per_week": 60,
         "native_country": "United-States",
     }
-    response = client.post("/predict/", json.dumps(data), headers={"Content-Type": "application/json"})
+    response = client.post(
+        "/predict/",
+        json.dumps(data),
+        headers={
+            "Content-Type": "application/json"})
     assert response.status_code == 200
     assert response.json() == {"salary_prediction": ">50K"}
 
@@ -61,6 +66,10 @@ def test_salary_prediction_under_50k():
         "hours_per_week": 40,
         "native_country": "United-States",
     }
-    response = client.post("/predict/", json.dumps(data), headers={"Content-Type": "application/json"})
+    response = client.post(
+        "/predict/",
+        json.dumps(data),
+        headers={
+            "Content-Type": "application/json"})
     assert response.status_code == 200
     assert response.json() == {"salary_prediction": "<=50K"}

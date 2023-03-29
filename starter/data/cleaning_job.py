@@ -1,5 +1,5 @@
 '''
-The following code reads a CSV file called "census.csv", removes spaces after commas in each line, and saves the cleaned lines to a new file "clean_census.csv". 
+The following code reads a CSV file called "census.csv", removes spaces after commas in each line, and saves the cleaned lines to a new file "clean_census.csv".
 '''
 
 # Define the input and output filenames

@@ -31,6 +31,7 @@ cat_features = [
     "native-country",
 ]
 
+
 class EmployeeInfo(BaseModel):
     """
     Pydantic schema for the input data, including an example.
@@ -71,8 +72,10 @@ class EmployeeInfo(BaseModel):
             }
         }
 
+
 class SalaryPrediction(BaseModel):
     salary_prediction: str
+
 
 @app.get('/')
 async def root():
@@ -80,6 +83,7 @@ async def root():
     Root endpoint with a welcome message.
     """
     return {"message": "Welcome to the salary prediction API!"}
+
 
 @app.post('/predict/', response_model=SalaryPrediction)
 async def predict_salary(employee_info: EmployeeInfo):
@@ -90,14 +94,21 @@ async def predict_salary(employee_info: EmployeeInfo):
     :return: Salary prediction as a JSON response
     """
     try:
-        sample_dict = {key.replace('_', '-'): [value] for key, value in employee_info.__dict__.items()}
+        sample_dict = {
+            key.replace(
+                '_',
+                '-'): [value] for key,
+            value in employee_info.__dict__.items()}
         data = pd.DataFrame.from_dict(sample_dict)
 
-        X_input, _, _, _ = process_data(data, categorical_features=cat_features, label=None, training=False, encoder=encoder, lb=lb)
+        X_input, _, _, _ = process_data(
+            data, categorical_features=cat_features, label=None, training=False, encoder=encoder, lb=lb)
         preds = inference(rf_model, X_input)
         salary_prediction = lb.inverse_transform(preds)
 
         return {"salary_prediction": salary_prediction[0]}
 
     except Exception as e:
-        raise HTTPException(status_code=400, detail=f"An error occurred during processing: {e}")
+        raise HTTPException(
+            status_code=400,
+            detail=f"An error occurred during processing: {e}")
