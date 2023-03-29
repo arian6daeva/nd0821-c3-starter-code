@@ -7,11 +7,11 @@ from starter.ml.data import process_data
 from starter.ml.model import inference
 
 # Load the trained model, encoder, and label binarizer
-with open('starter/model/rf_model.pkl', 'rb') as f:
+with open('model/rf_model.pkl', 'rb') as f:
     rf_model = pickle.load(f)
-with open('starter/model/encoder.pkl', 'rb') as f:
+with open('model/encoder.pkl', 'rb') as f:
     encoder = pickle.load(f)
-with open('starter/model/lb.pkl', 'rb') as f:
+with open('model/lb.pkl', 'rb') as f:
     lb = pickle.load(f)
 
 # Create a FastAPI instance
