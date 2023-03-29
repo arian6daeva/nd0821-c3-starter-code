@@ -2,7 +2,6 @@
 
 # Import necessary modules
 import os
-import sys
 import pandas as pd
 import pickle
 from sklearn.model_selection import train_test_split
